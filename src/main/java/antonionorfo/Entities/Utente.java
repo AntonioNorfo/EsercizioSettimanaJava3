@@ -1,11 +1,9 @@
 package antonionorfo.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -14,6 +12,10 @@ public class Utente {
     @Id
     @GeneratedValue
     private UUID utente_id;
+
+    @OneToMany(mappedBy = "utente")
+    private List<Prestito> prestiti;
+
     private String nome;
     private String cognome;
     private LocalDate dataDiNascita;
@@ -22,8 +24,7 @@ public class Utente {
     public Utente() {
     }
 
-    public Utente(UUID utente_id, String nome, String cognome, LocalDate dataDiNascita, int numeroTessera) {
-        this.utente_id = utente_id;
+    public Utente(String nome, String cognome, LocalDate dataDiNascita, int numeroTessera) {
         this.nome = nome;
         this.cognome = cognome;
         this.dataDiNascita = dataDiNascita;
@@ -32,6 +33,14 @@ public class Utente {
 
     public UUID getUtente_id() {
         return utente_id;
+    }
+
+    public List<Prestito> getPrestiti() {
+        return prestiti;
+    }
+
+    public void setPrestiti(List<Prestito> prestiti) {
+        this.prestiti = prestiti;
     }
 
     public String getNome() {
@@ -77,3 +86,4 @@ public class Utente {
                 '}';
     }
 }
+
