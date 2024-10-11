@@ -39,9 +39,12 @@ public class Libri extends Catalogo {
 
     @Override
     public String toString() {
-        return "Libri{" +
-                "autore='" + autore + '\'' +
+        return "Libro{" +
+                "titolo='" + getTitolo() + '\'' +
+                ", autore='" + autore + '\'' +
                 ", genere=" + genere +
+                ", anno di pubblicazione=" + getAnnoDiPubblicazione() +
+                ", numero pagine=" + getNumeroPagine() +
                 '}';
     }
 }

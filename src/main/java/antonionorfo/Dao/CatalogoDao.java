@@ -61,6 +61,21 @@ public class CatalogoDao {
     }
 
 
+    public List<Catalogo> findByTitolo(String parteDelTitolo) {
+        TypedQuery<Catalogo> query = em.createQuery(
+                "SELECT c FROM Catalogo c WHERE c.titolo LIKE :titolo", Catalogo.class);
+        query.setParameter("titolo", "%" + parteDelTitolo + "%");
+
+        List<Catalogo> results = query.getResultList();
+
+        if (results.isEmpty()) {
+            throw new ElementoNonTrovatoException("Non abbiamo trovato alcun elemento associato al titolo o a qualche carattere associato: " + parteDelTitolo);
+        }
+
+        return results;
+    }
+
+
     public void deleteById(UUID id) {
         em.getTransaction().begin();
         Catalogo catalogo = em.find(Catalogo.class, id);

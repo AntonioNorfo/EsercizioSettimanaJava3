@@ -90,8 +90,20 @@ public class Application {
             String risultato = libriDiTolkien.stream()
                     .map(Libri -> Libri.toString())
                     .reduce("", (acc, libro) -> acc + libro + "\n");
-            
-            System.out.println("\n Tutti i libri che hanno questo autore sono:\n" + risultato);
+            System.out.println("\nTutti i libri che hanno questo autore sono:\n" + risultato);
+        } catch (ElementoNonTrovatoException e) {
+            System.out.println(e.getMessage());
+        }
+
+
+        try {
+            List<Catalogo> cataloghi = catalogoDao.findByTitolo("Spiderman");
+
+            String risultato = cataloghi.stream()
+                    .map(Catalogo -> Catalogo.toString())
+                    .reduce("", (acc, catalogo) -> acc + catalogo + "\n");
+
+            System.out.println("\n Elementi che corrispondono al titolo inserito:\n" + risultato);
         } catch (ElementoNonTrovatoException e) {
             System.out.println(e.getMessage());
         }
