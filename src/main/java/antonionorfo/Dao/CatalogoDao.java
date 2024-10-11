@@ -29,9 +29,12 @@ public class CatalogoDao {
         em.getTransaction().commit();
     }
 
-    public void delete(Catalogo catalogo) {
+    public void deleteById(UUID id) {
         em.getTransaction().begin();
-        em.remove(em.contains(catalogo) ? catalogo : em.merge(catalogo));
+        Catalogo catalogo = em.find(Catalogo.class, id);
+        if (catalogo != null) {
+            em.remove(catalogo);
+        }
         em.getTransaction().commit();
     }
 }

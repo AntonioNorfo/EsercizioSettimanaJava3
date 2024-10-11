@@ -1,6 +1,8 @@
 package antonionorfo.Entities;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
 
 import java.time.LocalDate;
@@ -8,6 +10,7 @@ import java.time.LocalDate;
 @Entity
 @Table
 public class Riviste extends Catalogo {
+    @Enumerated(EnumType.STRING)
     private Peridiocita peridiocita;
 
     public Riviste() {

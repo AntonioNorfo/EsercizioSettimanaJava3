@@ -12,6 +12,7 @@ import jakarta.persistence.Persistence;
 
 import java.time.LocalDate;
 import java.util.Random;
+import java.util.UUID;
 
 public class Application {
 
@@ -43,6 +44,8 @@ public class Application {
         catalogoDao.save(rivista2);
         catalogoDao.save(rivista3);
 
+
+        catalogoDao.deleteById(UUID.fromString("b18093dc-1c79-4d6c-b349-16c999e5d2e7"));
 
         em.close();
         emf.close();

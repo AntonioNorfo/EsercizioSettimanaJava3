@@ -1,12 +1,15 @@
 package antonionorfo.Entities;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 
 import java.time.LocalDate;
 
 @Entity
 public class Libri extends Catalogo {
     private String autore;
+    @Enumerated(EnumType.STRING)
     private Genere genere;
 
     public Libri() {
