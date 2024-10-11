@@ -72,4 +72,16 @@ public class Prestito {
     public void setElementoPrestato(Catalogo elementoPrestato) {
         this.elementoPrestato = elementoPrestato;
     }
+
+    @Override
+    public String toString() {
+        return "Prestito{" +
+                "prestito_id=" + prestito_id +
+                ", dataInizioPrestito=" + dataInizioPrestito +
+                ", dataRestituzionePrevista=" + dataRestituzionePrevista +
+                ", dataRestituzioneEffettiva=" + dataRestituzioneEffettiva +
+                ", utente=" + utente +
+                ", elementoPrestato=" + elementoPrestato +
+                '}';
+    }
 }
